@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, {useEffect} from 'react';
 import {
   AppBar,
@@ -65,12 +66,12 @@ function Todo(props) {
           无日期
         </Typography>
         <List sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>
-          {[0, 1, 2, 3].map((value) => {
-            const labelId = `checkbox-list-label-${value}`;
+          {todos.map((value) => {
+            const labelId = `checkbox-list-label-${value.id}`;
 
             return (
               <ListItem
-                key={value}
+                key={value.id}
                 secondaryAction={
                   <IconButton edge="end" aria-label="comments">
                     <MoreHorizIcon/>
@@ -78,18 +79,17 @@ function Todo(props) {
                 }
                 disablePadding
               >
-                <ListItemButton role={undefined} onClick={() => {
-                }} dense>
+                <ListItemButton role={undefined} onClick = {() => {}} dense>
                   <ListItemIcon>
                     <Checkbox
                       edge="start"
-                      checked={false}
+                      checked={value.completed}
                       tabIndex={-1}
                       disableRipple
                       inputProps={{'aria-labelledby': labelId}}
                     />
                   </ListItemIcon>
-                  <ListItemText id={labelId} primary={`Line item ${value + 1}`}/>
+                  <ListItemText id={labelId} primary={value.todo}/>
                 </ListItemButton>
               </ListItem>
             );

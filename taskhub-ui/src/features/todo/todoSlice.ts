@@ -11,7 +11,14 @@ export interface TodoState {
 }
 
 const initialState: TodoState = {
-  todos: {},
+  todos: [
+    {
+      "id": 1,
+      "todo": "Do something nice for someone I care about",
+      "completed": true,
+      "userId": 26
+    }
+  ],
   status: 'idle',
 }
 
